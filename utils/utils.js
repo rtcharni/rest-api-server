@@ -20,7 +20,7 @@ class Utils {
     return (err, req, res, next) => {
       console.error(err);
       // Sending just 500 on every fail / error. Could / should be implemented with different cases.
-      // E.g. status == 4XX / 5XX or others.
+      // E.g. status == 4XX / 5XX or others. Depending on possible errors.
       return res.status(500).send(message);
     };
   }

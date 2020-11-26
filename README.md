@@ -7,7 +7,7 @@
 
 ```javascript
 const api = require('rest-api-server');
-const server = new api.Server(); // || new api.Server(1234, 'https://myawesomesite.com)
+const server = new api.Server(); // new api.Server(1234, 'https://myawesomesite.com)
 server.run();
 ```
 
