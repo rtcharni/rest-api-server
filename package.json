@@ -1,0 +1,25 @@
+{
+  "name": "rest-api-server",
+  "version": "1.0.0",
+  "description": "REST API Service",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Roman Tcharni",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-random-string": "^3.3.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6"
+  }
+}
