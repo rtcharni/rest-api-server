@@ -7,13 +7,17 @@
 
 ```javascript
 const api = require('rest-api-server');
-const server = new api.Server(); // new api.Server(1234, 'https://myawesomesite.com)
+const server = new api.Server();
 server.run();
 ```
 
 ## Options
 
-Application uses two different environment variables `API_PORT` & `API_HOST_ADDRESS`.
+Application uses two different environment variables `API_PORT` & `API_HOST_ADDRESS` .
 
-- Select on which port api server runs with `API_PORT` - default `8080`.
-- Tell to application what is the host address with `API_HOST_ADDRESS` - default `http://localhost`.
+- Select on which port api server runs with `API_PORT` - default `8080` .
+- Tell to application what is the host address with `API_HOST_ADDRESS` - default `http://localhost` .
+
+## Tests
+
+Run all unit tests from root folder with command `npm test` .

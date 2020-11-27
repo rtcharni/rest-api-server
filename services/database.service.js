@@ -4,22 +4,24 @@ const cryptoRandomString = require('crypto-random-string');
 
 // Could be slitted to multiple files or abrtractions if more functionality.
 // Made easy solution with plain json file that comes with application.
-// Could be any database solution, e.g. Sqlite (no need for installation).
+// Could be any database solution, e.g. Sqlite (no need for installation), on cloud or locally on machine.
 // With real database would use some sort of ORM or simillar package. E.g. Sequelize or Knex.
 // Could use also DATABASE_PATH for using other database file location
 
 class DatabaseService {
   databasePath = path.join(__dirname, '..', 'database', 'database.json');
 
-  getSavedUrl(urlId) {
+  getSavedUrlById(urlId) {
     const db = this._readDatabase(this.databasePath);
     const foundEntry = db.find(entry => entry.id === urlId);
 
     if (foundEntry) {
       if (new Date().toISOString() > foundEntry.expiresAt) {
-        console.log(`Entry has expired, removing from database. Entry: `, foundEntry);
-        const updatedDb = db.filter(entry => entry.id !== foundEntry.id);
-        this._saveDatabase(updatedDb, this.databasePath);
+        console.log(`Entry has expired. Entry: `, foundEntry);
+
+        // Could remove expired entries from database. Leaving for statistics purposes.
+        // const updatedDb = this._removeExpiredEntry(foundEntry.id);
+        // this._saveDatabase(updatedDb, this.databasePath);
         return null;
       }
       return foundEntry;
@@ -53,6 +55,7 @@ class DatabaseService {
 
   _readDatabase(path) {
     try {
+      // Could check here that file exists, if not then could create new empty database file.
       return JSON.parse(fs.readFileSync(path).toString());
     } catch (error) {
       // Don't continue request and code execution if error while reading database occurs,
@@ -73,6 +76,11 @@ class DatabaseService {
       console.error(error);
       throw new Error(`Error while writing database.`);
     }
+  }
+
+  _removeExpiredEntry(expiredEntryId, database) {
+    console.log(`Removing entry from database with ID of ${expiredEntryId}`);
+    return database.filter(entry => entry.id !== expiredEntryId);
   }
 }
 

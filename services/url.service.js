@@ -10,7 +10,7 @@ class UrlService {
   databaseService = new DatabaseService();
 
   getSavedUrl(urlId) {
-    const savedUrlObj = this.databaseService.getSavedUrl(urlId);
+    const savedUrlObj = this.databaseService.getSavedUrlById(urlId);
     return savedUrlObj ? savedUrlObj.url : null;
   }
 
