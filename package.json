@@ -1,7 +1,7 @@
 {
   "name": "rest-api-server",
   "version": "1.0.0",
-  "description": "REST API Service",
+  "description": "REST API Service with local JSON database for saving and fetching URL addresses.",
   "main": "server.js",
   "scripts": {
     "test": "mocha",
@@ -10,6 +10,7 @@
   },
   "keywords": [],
   "author": "Roman Tcharni",
+  "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "crypto-random-string": "^3.3.0",
